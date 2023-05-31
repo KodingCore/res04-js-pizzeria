@@ -1,0 +1,196 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* VARS */
+/* LAYOUTS */
+main > aside {
+  border-left: 1px solid rgb(3, 7, 30);
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-rows: 0.1fr 0.7fr 0.2fr;
+}
+main > aside h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+main > aside > ul {
+  display: grid;
+  grid-template-rows: repeat(13, 1fr);
+  padding: 2rem 0;
+}
+main > aside > ul article {
+  width: 100%;
+  height: 100%;
+}
+main > aside > ul article header {
+  display: grid;
+  grid-template-columns: 0.2fr 0.8fr;
+}
+main > aside > ul article header figure {
+  height: 100%;
+}
+main > aside > ul article header figure img {
+  width: 45%;
+}
+main > aside > ul article header h3 {
+  align-self: center;
+  justify-self: start;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+main > aside > ul li:last-of-type {
+  grid-row: 13/14;
+  text-align: center;
+}
+main > aside > ul li:last-of-type button {
+  background-color: rgb(208, 0, 0);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+main > aside section {
+  width: 100%;
+  height: 100%;
+}
+main > aside section figure {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main > aside section figure img {
+  width: 20%;
+}
+main > aside section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+#stage {
+  display: grid;
+  grid-template-rows: 0.1fr 0.9fr;
+  padding-top: 2rem;
+}
+#stage h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+}
+#stage ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+  padding: 2rem;
+}
+#stage ul article {
+  padding: 2rem;
+  border-radius: 0.4rem;
+}
+#stage ul article:not(.selected) {
+  border: 1px solid rgb(3, 7, 30);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+#stage ul article.selected {
+  border: 2px solid rgb(208, 0, 0);
+  box-shadow: 2px 2px 5px rgba(208, 0, 0, 0.5);
+}
+#stage ul article figure {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#stage ul article figure img {
+  width: 50%;
+}
+#stage ul article h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+html {
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: rgb(3, 7, 30);
+}
+body main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr;
+}
+body main .selected {
+  border: red 2px solid;
+}
+
+.sr-only {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,82 @@
+main > aside {
+  border-left: 1px solid $xiketic;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-rows: 0.1fr 0.7fr 0.2fr;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  & > ul {
+    display: grid;
+    grid-template-rows: repeat(13, 1fr);
+    padding: 2rem 0;
+
+    article {
+      width:100%;
+      height:100%;
+
+      header {
+        display: grid;
+        grid-template-columns: 0.2fr 0.8fr;
+
+        figure {
+          height:100%;
+
+          img {
+            width:45%;
+          }
+        }
+
+        h3 {
+          align-self: center;
+          justify-self: start;
+          font-size: 1.3rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+    li:last-of-type {
+      grid-row: 13 / 14;
+      text-align: center;
+
+      button {
+        background-color: $rosso-corsa;
+        color:white;
+        padding:1rem 2rem;
+        border:none;
+        border-radius: 0.4rem;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  section {
+    width:100%;
+    height:100%;
+
+
+    figure {
+      width:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width:20%;
+      }
+    }
+
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}

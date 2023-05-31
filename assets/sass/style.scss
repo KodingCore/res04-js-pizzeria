@@ -1,0 +1,35 @@
+@import "libs/reset";
+
+/* VARS */
+@import "vars";
+
+/* LAYOUTS */
+@import "layouts/sidebar";
+@import "layouts/stage";
+
+html {
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  width:100vw;
+  height: 100vh;
+  overflow: hidden;
+  color: $xiketic;
+
+  main {
+    width:100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 0.7fr 0.3fr;
+    
+    .selected{
+      border: red 2px solid;
+    }
+  }
+}
+
+.sr-only {
+  display: none;
+}
