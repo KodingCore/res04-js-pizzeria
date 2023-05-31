@@ -175,18 +175,20 @@ html {
 
 body {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: auto;
   color: rgb(3, 7, 30);
 }
 body main {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: grid;
   grid-template-columns: 0.7fr 0.3fr;
 }
 body main .selected {
   border: red 2px solid;
+}
+body aside ul li button:hover {
+  cursor: pointer;
 }
 
 .sr-only {

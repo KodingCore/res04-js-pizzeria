@@ -1,15 +1,15 @@
 import { Ingredient } from "./classes/ingredient.js"
+import { Pizza } from "./classes/pizza.js"
 
+let intervalId = null;
+let timeoutId = null;
+let enCuisson = false;
+
+//Creation du HTML (retourne une liste des nodes d'articles d'ingredients dans stage)
 function creatStage(tabIngredients){
-    const tabArticleIngredients = [];
+    let tabArticleIngredients = [];
     
     const stage = document.getElementById("stage");
-    
-    const titreStage = document.createElement("h2");
-    stage.appendChild(titreStage);
-    
-    const textTitreStage = document.createTextNode("Choix des ingrédients");
-    titreStage.appendChild(textTitreStage);
     
     const listeStage = document.createElement("ul");
     stage.appendChild(listeStage);
@@ -45,6 +45,8 @@ function creatStage(tabIngredients){
     return tabArticleIngredients;
 }
 
+
+//Initialisation du tableau des ingredients (retourne un tableau d'objets de la classe Ingredient)
 function initialisationIngredients(){
     let availableIngredients = [];
     
@@ -66,17 +68,84 @@ function initialisationIngredients(){
     return availableIngredients;
 }
 
-function listenerChoice(elements){
-    for(let element of elements){
-        element.addEventListener("click", function(){
-            element.classList.toggle("selected");
+
+//Listener des click sur les ingredients
+function addListenerChoice(articles, objects){
+    let newPizza = false;
+    for(let i=0; i < articles.length; i++){
+    
+        articles[i].addEventListener("click", function(){
+            if(!enCuisson){
+                if(!newPizza){
+                
+                    newPizza = new Pizza();
+                }
+            
+                articles[i].classList.toggle("selected");
+                
+                if(articles[i].classList.contains("selected")){
+                    
+                    newPizza.addIngredient(objects[i]);
+                }else{
+                    
+                    newPizza.removeIngredient(objects[i]);
+                }
+                commandeBtnListener(newPizza, articles);
+            }
+            
+            
         })
     }
 }
 
 
+function commandeBtnListener(pizza, articles){
+    const btnCommander = document.querySelector("#order");
+    if(pizza !== false){
+        btnCommander.addEventListener("click", function(){
+            enCuisson = true;
+            for(let article of articles){
+                article.classList.remove("selected");
+            }
+            intervalId = setInterval(removeOne ,1000, pizza, articles);
+        })
+    }
+}
+
+function removeOne(pizza){
+    if(pizza.ingredients.length > 0){
+        pizza.removeIngredient(pizza.ingredients[pizza.ingredients.length]);
+    }
+    
+    if(pizza.ingredients.length === 0){
+        clearInterval(intervalId);
+        intervalId = null;
+        pizzaPrete();
+    }
+    
+}
+
+function pizzaPrete(){
+    const aside = document.getElementsByTagName("aside")[0];
+    const h2 = aside.getElementsByTagName("h2")[0];
+    const imgPizza = document.createElement("img");
+    imgPizza.setAttribute("src", "assets/img/pizza.png");
+    imgPizza.setAttribute("alt", "Pizza");
+    imgPizza.setAttribute("width", aside.getBoundingClientRect().width + "");
+    aside.appendChild(imgPizza);
+    h2.textContent = "Votre pizza est prête!";
+    timeoutId = setTimeout(function(){
+        h2.textContent = "Votre pizza";
+        aside.removeChild(imgPizza);
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        enCuisson = false;
+    }, 5000);
+    
+}
+
 window.addEventListener("DOMContentLoaded", function(){
-    const tabIngredients = initialisationIngredients();
-    const tabArticleIngredients = creatStage(tabIngredients);
-    listenerChoice(tabArticleIngredients);
+    const tabIngredients = initialisationIngredients(); //liste d'objets Ingredients
+    const tabArticleIngredients = creatStage(tabIngredients); //Liste d'articles des ingredients
+    addListenerChoice(tabArticleIngredients, tabIngredients);
 })

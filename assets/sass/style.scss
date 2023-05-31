@@ -14,18 +14,28 @@ html {
 
 body {
   width:100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: auto;
+  //overflow: hidden;
   color: $xiketic;
 
   main {
     width:100vw;
-    height: 100vh;
+    height: auto;
     display: grid;
     grid-template-columns: 0.7fr 0.3fr;
     
     .selected{
       border: red 2px solid;
+    }
+  }
+  
+  aside{
+    ul{
+      li{
+        button:hover{
+          cursor: pointer;
+        }
+      }
     }
   }
 }
